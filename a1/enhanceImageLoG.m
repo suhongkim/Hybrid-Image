@@ -1,6 +1,6 @@
 function enhanced = enhanceImageLoG(image, sigma)
     
-    enhanced = image + LoGfilt(image, sigma); 
-    % normalize? 
+    enhanced = im2double(image) + (LoGfilt(image, sigma)); 
+   % enhanced = (enhanced - min(enhanced(:)))/(max(enhanced(:))-min(enhanced(:)));
     
 end

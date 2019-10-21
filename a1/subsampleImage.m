@@ -1,15 +1,11 @@
 function sub_img = subsampleImage(image, subs, sigma)
-     % recursive call
-    if subs > 1
-        image = subsampleImage(image, floor(subs/2), sigma); 
-    end
-    
+      
     % LPF smoothing
     if sigma > 0
-        image = LPF(image, sigma, 5); 
+        image = LPF(image, sigma, max(5, round(3.5*sigma))); 
     end
 
     % subsampling 
-    sub_img = image(1:2:end, 1:2:end, :);  % odd, even?   
+    sub_img = image(1:subs:end, 1:subs:end, :);  
 
 end 
